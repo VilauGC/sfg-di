@@ -1,9 +1,14 @@
 package com.vilaugc.sfgdi;
 
+import com.vilaugc.sfgdi.controllers.ConstructorInjectedController;
 import com.vilaugc.sfgdi.controllers.MyController;
+import com.vilaugc.sfgdi.controllers.PropertyInjectedController;
+import com.vilaugc.sfgdi.controllers.SetterInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+
+import java.lang.invoke.ConstantBootstraps;
 
 @SpringBootApplication
 public class SfgDiApplication {
@@ -14,6 +19,21 @@ public class SfgDiApplication {
 		MyController myController = (MyController) ctx.getBean("myController");
 
 		System.out.println(myController.sayHello());
+
+		System.out.println("-----Property");
+		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
+
+		System.out.println(propertyInjectedController.getGreeting());
+		System.out.println("-----Setter");
+		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
+
+		System.out.println(setterInjectedController.getGreeting());
+
+		System.out.println("-----Constructor");
+
+		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
+		System.out.println(constructorInjectedController.getGreeting());
+
 	}
 
 }
