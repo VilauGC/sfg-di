@@ -1,11 +1,8 @@
-package guru.springframework.sfgdi.services;
-
-import org.springframework.stereotype.Service;
+package com.springframework.pets;
 
 /**
  * Created by jt on 12/28/19.
  */
-@Service("cat")
 public class CatPetService implements PetService {
     @Override
     public String getPetType() {
